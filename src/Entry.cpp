@@ -6,7 +6,7 @@
 #include "Main.h"
 
 extern "C" {
-	void SetTexture (int textreID, int width, int height, int format) {
+	void SetTexture (int textureID, int width, int height, int format) {
 		(Main::INSTANCE())->SetTexture(textureID, width, height, format);
 	}
 
