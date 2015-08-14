@@ -1,3 +1,9 @@
+#ifndef GLTEXTURE_MAIN
+#define GLTEXTURE_MAIN
+
+#include "Texture.h"
+#include "Decoder.h"
+
 class Main {
 	public:
 		static Main* INSTANCE ();
@@ -11,4 +17,6 @@ class Main {
 		Main* instance;
 		Main ();
 		~Main ();
-}
+};
+
+#endif

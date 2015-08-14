@@ -168,15 +168,39 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\UnityPluginInterface.h"
+			RelativePath="..\src\UnityPluginInterface.h"
 			>
 		</File>
 		<File
-			RelativePath="..\Video.cpp"
+			RelativePath="..\src\Decoder.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\Video.h"
+			RelativePath="..\src\Decoder.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\Entry.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\src\Entry.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\Main.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\src\Main.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\Texture.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\src\Texture.h"
 			>
 		</File>
 	</Files>

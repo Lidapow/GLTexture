@@ -1,3 +1,6 @@
+#ifndef GLTEXTURE_TEXTURE
+#define GLTEXTURE_TEXTURE
+
 class Texture {
 public:
 	enum Format {
@@ -10,7 +13,10 @@ public:
 	void SetTexture (int textureID, int width, int height, int format);
 	void FillTexture (int dataLen, char* data);
 private:
+	int m_TextureID;
 	int m_Width;
 	int m_Height;
 	Format m_Format;
-}
+};
+
+#endif
