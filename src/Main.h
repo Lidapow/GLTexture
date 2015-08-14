@@ -14,7 +14,7 @@ class Main {
 	private:
 		Texture* m_Texture;
 		Decoder* m_Decoder;
-		Main* instance;
+		static Main* instance;
 		Main ();
 		~Main ();
 };

@@ -3,8 +3,6 @@
 #include "Decoder.h"
 #include <stdio.h>
 
-static Main* instance = NULL;
-
 Main* Main::INSTANCE () {
 	if(instance == NULL)
 		instance = new Main();
