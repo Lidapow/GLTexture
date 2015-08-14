@@ -26,7 +26,7 @@ void Main::DecodeVideo (int dataLen, char* data) {
 }
 
 Main::Main () {
-	m_Texture = new Texture():
+	m_Texture = new Texture();
 	m_Decoder = new Decoder();
 }
 
