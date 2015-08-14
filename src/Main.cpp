@@ -3,7 +3,9 @@
 #include "Decoder.h"
 #include <stdio.h>
 
-static Main* Main::INSTANCE () {
+Main* instance = NULL;
+
+Main* Main::INSTANCE () {
 	if(instance == NULL)
 		instance = new Main();
 	return instance;
@@ -20,20 +22,17 @@ void Main::SetTexture (int textreID, int width, int height, int format) {
 void Main::DecodeVideo (int dataLen, char* data) {
 	int decodedLen = 0;
 	char* decodedData;
-	try {
-		m_Decoder->Decode(dataLen, data, &decodedLen, decodedData),
-		m_Texture->FillTexture(decodedLen, decodedData);
-	} catch {
-
-	}
+	
+	m_Decoder->Decode(dataLen, data, &decodedLen, decodedData),
+	m_Texture->FillTexture(decodedLen, decodedData);
 }
 
-void Main::Main () {
+Main::Main () {
 	m_Texture = new Texture():
 	m_Decoder = new Decoder();
 }
 
-void Main::~Main () {
+Main::~Main () {
 	delete m_Texture;
 	delete m_Decoder;
 }
