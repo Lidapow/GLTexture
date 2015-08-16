@@ -12,6 +12,7 @@
 		#include <GL/gl.h>
 	#else
 		#include <OpenGL/OpenGL.h>
+        #include <OpenGL/gl.h>
 	#endif
 #endif
 
@@ -21,6 +22,12 @@ Texture::Texture () {
 	m_Width = -1;
 	m_Height = -1;
 	m_Format = RGB;
+}
+
+void Texture::SetGraphicDevice (void* device, int deviceType, int eventType) {
+	m_Device = device;
+	m_DeviceType = deviceType;
+	m_EventType = eventType;
 }
 
 void Texture::SetTexture (int textureID, int width, int height) {
@@ -47,7 +54,10 @@ void Texture::FillTexture (int dataLen, char* data) {
 	if(m_TextureID == -1)
 		return;
 
-	#if SUPPORT_OPENGL
+	// #if SUPPORT_OPENGL
+
+	// if(m_DeviceType != kGfxRendererOpenGL)
+	// 	return;
 
 	glDisable (GL_CULL_FACE);
 	glDisable (GL_LIGHTING);
@@ -60,6 +70,6 @@ void Texture::FillTexture (int dataLen, char* data) {
 	glBindTexture (GL_TEXTURE_2D, m_TextureID);
 	glTexSubImage2D (GL_TEXTURE_2D, 0, 0, 0, m_Width, m_Height, GL_RGB, GL_UNSIGNED_BYTE, &data[0]);
 
-	#endif
+	// #endif
 }
 

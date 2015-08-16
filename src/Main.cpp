@@ -11,20 +11,34 @@ Main* Main::INSTANCE () {
 	return instance;
 }
 
+void Main::Release () {
+	m_Decoder->Release();
+}
+
+void Main::SetGraphicDevice (void* device, int deviceType, int eventType) {
+	m_Texture->SetGraphicDevice(device, deviceType, eventType);
+}
+
 void Main::SetTexture (int textureID, int width, int height) {
 	m_Texture->SetTexture(textureID, width, height);
+	m_Decoder->SetDimension(width, height);
 }
 
 void Main::SetTexture (int textureID, int width, int height, int format) {
 	m_Texture->SetTexture(textureID, width, height, format);
+	m_Decoder->SetDimension(width, height);
 }
 
 void Main::DecodeVideo (int dataLen, char* data) {
-	int decodedLen = 0;
-	char* decodedData;
+	m_Decoder->Decode(dataLen, data);
+}
 
-	m_Decoder->Decode(dataLen, data, &decodedLen, decodedData),
-	m_Texture->FillTexture(decodedLen, decodedData);
+void Main::FillTexture () {
+	int len = m_Decoder->GetDecodedLen();
+	if(len == -1)
+		return;
+
+	m_Texture->FillTexture(len, m_Decoder->GetDecodedData());
 }
 
 Main::Main () {

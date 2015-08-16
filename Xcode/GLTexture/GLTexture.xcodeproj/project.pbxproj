@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5623D661B7ECD9600923F93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5623D651B7ECD9600923F93 /* AVFoundation.framework */; };
+		A5640D181B7DCC2500ECB299 /* Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5640D0F1B7DCC2500ECB299 /* Decoder.cpp */; };
+		A5640D191B7DCC2500ECB299 /* Entry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5640D111B7DCC2500ECB299 /* Entry.cpp */; };
+		A5640D1A1B7DCC2500ECB299 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5640D131B7DCC2500ECB299 /* Main.cpp */; };
+		A5640D1B1B7DCC2500ECB299 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5640D151B7DCC2500ECB299 /* Texture.cpp */; };
+		A5640D1D1B7DCD5900ECB299 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5640D1C1B7DCD5900ECB299 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A5623D651B7ECD9600923F93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A5623D671B7ECEEE00923F93 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		A5640D051B7DCBF400ECB299 /* GLTexture.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLTexture.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5640D091B7DCBF400ECB299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5640D0F1B7DCC2500ECB299 /* Decoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Decoder.cpp; path = ../../../src/Decoder.cpp; sourceTree = "<group>"; };
+		A5640D101B7DCC2500ECB299 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decoder.h; path = ../../../src/Decoder.h; sourceTree = "<group>"; };
+		A5640D111B7DCC2500ECB299 /* Entry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Entry.cpp; path = ../../../src/Entry.cpp; sourceTree = "<group>"; };
+		A5640D121B7DCC2500ECB299 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = ../../../src/Entry.h; sourceTree = "<group>"; };
+		A5640D131B7DCC2500ECB299 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../../src/Main.cpp; sourceTree = "<group>"; };
+		A5640D141B7DCC2500ECB299 /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Main.h; path = ../../../src/Main.h; sourceTree = "<group>"; };
+		A5640D151B7DCC2500ECB299 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = ../../../src/Texture.cpp; sourceTree = "<group>"; };
+		A5640D161B7DCC2500ECB299 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Texture.h; path = ../../../src/Texture.h; sourceTree = "<group>"; };
+		A5640D171B7DCC2500ECB299 /* UnityPluginInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnityPluginInterface.h; path = ../../../src/UnityPluginInterface.h; sourceTree = "<group>"; };
+		A5640D1C1B7DCD5900ECB299 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5640D021B7DCBF400ECB299 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5623D661B7ECD9600923F93 /* AVFoundation.framework in Frameworks */,
+				A5640D1D1B7DCD5900ECB299 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5640CFC1B7DCBF400ECB299 = {
+			isa = PBXGroup;
+			children = (
+				A5623D671B7ECEEE00923F93 /* AVKit.framework */,
+				A5623D651B7ECD9600923F93 /* AVFoundation.framework */,
+				A5640D1C1B7DCD5900ECB299 /* OpenGL.framework */,
+				A5640D071B7DCBF400ECB299 /* GLTexture */,
+				A5640D061B7DCBF400ECB299 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5640D061B7DCBF400ECB299 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5640D051B7DCBF400ECB299 /* GLTexture.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5640D071B7DCBF400ECB299 /* GLTexture */ = {
+			isa = PBXGroup;
+			children = (
+				A5640D0F1B7DCC2500ECB299 /* Decoder.cpp */,
+				A5640D101B7DCC2500ECB299 /* Decoder.h */,
+				A5640D111B7DCC2500ECB299 /* Entry.cpp */,
+				A5640D121B7DCC2500ECB299 /* Entry.h */,
+				A5640D131B7DCC2500ECB299 /* Main.cpp */,
+				A5640D141B7DCC2500ECB299 /* Main.h */,
+				A5640D151B7DCC2500ECB299 /* Texture.cpp */,
+				A5640D161B7DCC2500ECB299 /* Texture.h */,
+				A5640D171B7DCC2500ECB299 /* UnityPluginInterface.h */,
+				A5640D081B7DCBF400ECB299 /* Supporting Files */,
+			);
+			path = GLTexture;
+			sourceTree = "<group>";
+		};
+		A5640D081B7DCBF400ECB299 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5640D091B7DCBF400ECB299 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5640D041B7DCBF400ECB299 /* GLTexture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5640D0C1B7DCBF400ECB299 /* Build configuration list for PBXNativeTarget "GLTexture" */;
+			buildPhases = (
+				A5640D011B7DCBF400ECB299 /* Sources */,
+				A5640D021B7DCBF400ECB299 /* Frameworks */,
+				A5640D031B7DCBF400ECB299 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GLTexture;
+			productName = GLTexture;
+			productReference = A5640D051B7DCBF400ECB299 /* GLTexture.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5640CFD1B7DCBF400ECB299 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Richard Lee";
+				TargetAttributes = {
+					A5640D041B7DCBF400ECB299 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
+			};
+			buildConfigurationList = A5640D001B7DCBF400ECB299 /* Build configuration list for PBXProject "GLTexture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A5640CFC1B7DCBF400ECB299;
+			productRefGroup = A5640D061B7DCBF400ECB299 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5640D041B7DCBF400ECB299 /* GLTexture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5640D031B7DCBF400ECB299 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5640D011B7DCBF400ECB299 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5640D1A1B7DCC2500ECB299 /* Main.cpp in Sources */,
+				A5640D1B1B7DCC2500ECB299 /* Texture.cpp in Sources */,
+				A5640D191B7DCC2500ECB299 /* Entry.cpp in Sources */,
+				A5640D181B7DCC2500ECB299 /* Decoder.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A5640D0A1B7DCBF400ECB299 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A5640D0B1B7DCBF400ECB299 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A5640D0D1B7DCBF400ECB299 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GLTexture/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		A5640D0E1B7DCBF400ECB299 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GLTexture/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5640D001B7DCBF400ECB299 /* Build configuration list for PBXProject "GLTexture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5640D0A1B7DCBF400ECB299 /* Debug */,
+				A5640D0B1B7DCBF400ECB299 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5640D0C1B7DCBF400ECB299 /* Build configuration list for PBXNativeTarget "GLTexture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5640D0D1B7DCBF400ECB299 /* Debug */,
+				A5640D0E1B7DCBF400ECB299 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5640CFD1B7DCBF400ECB299 /* Project object */;
+}
