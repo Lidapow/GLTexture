@@ -12,6 +12,7 @@ Decoder::Decoder () {
 Decoder::~Decoder () {
 	delete[] m_Buffer[0];
 	delete[] m_Buffer[1];
+	delete[] m_TempBuffer;
 	m_BufferIndex = 0;
 }
 
@@ -27,41 +28,100 @@ void Decoder::SetDimension (int width, int height) {
 	m_Width = width;
 	m_Height = height;
 
-	int len = m_Width * m_Height * 3;
+	int len = m_Width * m_Height * 1;
 	m_BufferLen[0] = len;
 	m_BufferLen[1] = len;
 	m_Buffer[0] = new char[len];
 	m_Buffer[1] = new char[len];
-	memset(m_Buffer[0], 50, len);
-	memset(m_Buffer[1], 150, len);
+	m_TempBuffer = new char[len];
+	memset(m_Buffer[0], 0, len);
+	memset(m_Buffer[1], 0, len);
+	memset(m_TempBuffer, 0, len);
 }
 
 void Decoder::Decode (int dataLen, char* data) {
 	// *out_DecodedLen = dataLen;
 	// out_DecodedData = malloc(sizeof(char) * dataLen);
-	// memcpy(out_DecodedData, data, dataLen);
-	// return;
 	int index = (m_BufferIndex + 1) % 2;
-	int currDataIndex = 0, colorData = 0;
-	int id = 0;
-	for(int w = 0; w < m_Width; w++) {
-		for(int h = 0; h < m_Height; h++) {
-			id = (w * 3) + (h * m_Width * 3);
+	int remain = 0;
+	if(dataLen + m_TempFilled <= m_BufferLen[index]) {
+		memcpy(&m_TempBuffer[m_TempFilled], data, dataLen);
+		m_TempFilled += dataLen;
+	} else {
+		//Temporary use remain
+		remain = (dataLen + m_TempFilled) - m_BufferLen[index];
 
-			colorData = (currDataIndex < dataLen) ? data[currDataIndex] : m_DecodeCount;
-			m_Buffer[index][id]     = (unsigned char)colorData % 255;
-			m_Buffer[index][id + 1] = (unsigned char)128;//m_DecodeCount % 255;
-			m_Buffer[index][id + 2] = (unsigned char)128;//m_DecodeCount % 255;
-			// m_Buffer[index][id] = m_DecodeCount % 255;
-			currDataIndex++;
-		}
+		memcpy(&m_TempBuffer[m_TempFilled], data, remain);
+		m_TempFilled += remain;
+		remain = dataLen - remain;
 	}
-	m_DecodeCount ++;
+
+	if(m_TempFilled < m_BufferLen[index])
+		return;
+
+	YUVY422TORGB888((unsigned char *)m_TempBuffer, m_Width, m_Height, (unsigned char *)m_Buffer[index]);
+
+	if(remain > 0) {
+		memcpy(m_TempBuffer, &data[dataLen - remain], remain);
+		m_TempFilled = remain;
+	} else {
+		m_TempFilled = 0;
+	}
+	// memcpy(m_Buffer[index], data, dataLen);
+	m_DecodeCount++;
 	m_BufferIndex = (m_BufferIndex + 1) % 2;
+	return;
 }
 
 void Decoder::Release () {
 	delete[] m_Buffer[0];
 	delete[] m_Buffer[1];
 }
+
+//输入YUV422I buffer数据，输出RGB buffer数据；  
+int Decoder::YUVY422TORGB888(unsigned char *src_buffer, int w, int h, unsigned char *des_buffer)  
+{  
+    unsigned char *yuv, *rgb;  
+    unsigned char u, v, y1, y2;  
+  
+    yuv = src_buffer;  
+    rgb = des_buffer;  
+  
+    if (yuv == NULL || rgb == NULL)  
+    {  
+        printf ("error: input data null!\n");     
+        return -1;  
+    }  
+  
+    int size = w * h;  
+  
+    for(int i = 0; i < size; i += 2)  
+    {  
+        y1 = yuv[2*i + 1];  
+        y2 = yuv[2*i + 3];
+        u = yuv[2*i];  
+        v = yuv[2*i + 2];  
+  
+#if 0  
+        rgb[3*i]     = (unsigned char)(y1 + 1.402*(u - 128));  
+        rgb[3*i + 1] = (unsigned char)(y1 - 0.344*(u - 128) - 0.714*(v - 128));  
+        rgb[3*i + 2] = (unsigned char)(y1 + 1.772*(v - 128));  
+  
+        rgb[3*i + 3] = (unsigned char)(y2 + 1.375*(u - 128));  
+        rgb[3*i + 4] = (unsigned char)(y2 - 0.344*(u - 128) - 0.714*(v - 128));  
+        rgb[3*i + 5] = (unsigned char)(y2 + 1.772*(v - 128));  
+#endif   
+      
+        //为提高性能此处用移位运算；  
+        rgb[3*i]     = (unsigned char)(y1 + (u - 128) + ((104*(u - 128))>>8));  
+        rgb[3*i + 1] = (unsigned char)(y1 - (89*(v - 128)>>8) - ((183*(u - 128))>>8));  
+        rgb[3*i + 2] = (unsigned char)(y1 + (v - 128) + ((199*(v - 128))>>8));  
+  
+        rgb[3*i + 3] = (unsigned char)(y2 + (u - 128) + ((104*(u - 128))>>8));  
+        rgb[3*i + 4] = (unsigned char)(y2 - (89*(v - 128)>>8) - ((183*(u - 128))>>8));  
+        rgb[3*i + 5] = (unsigned char)(y2 + (v - 128) + ((199*(v - 128))>>8));  
+    }  
+      
+    return 0;  
+} 
 
