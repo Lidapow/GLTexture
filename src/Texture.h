@@ -13,7 +13,6 @@ public:
 	void SetTexture (int textureID, int width, int height);
 	void SetTexture (int textureID, int width, int height, int format);
 	void FillTexture (int dataLen, char* data);
-	void Release ();
 private:
 	int m_TextureID;
 	int m_Width;
