@@ -14,10 +14,9 @@ public class GetPlugin : MonoBehaviour {
 	public Texture2D tex;
 	private bool tStop;
 	private YieldInstruction wfeof;
-	public string imageData;
 
 	[Inject]
-	IServer server;
+	Server server;
 	[Inject(false)]
 	ILogger logger;
 
