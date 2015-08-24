@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
-using System.Threading;
 using PowIoC;
 
 public class GetPlugin : MonoBehaviour {
@@ -13,16 +12,18 @@ public class GetPlugin : MonoBehaviour {
 	public extern static int Release ();
 
 	public Texture2D tex;
-	private Thread thread;
 	private bool tStop;
 	private YieldInstruction wfeof;
 	public string imageData;
 
 	[Inject]
 	IServer server;
+	[Inject(false)]
+	ILogger logger;
 
 	void Awake () {
 		Injector.Inject(this);
+		logger.Context = this.GetType().ToString();
 		server.retrievedPacket += CodecJob;
 	}
 
@@ -40,8 +41,6 @@ public class GetPlugin : MonoBehaviour {
 		);
 
 		tStop = false;
-		// thread = new Thread(new ThreadStart(CodecJob));
-		// thread.Start();
 		wfeof = new WaitForEndOfFrame();
 		StartCoroutine(CodecJobAsync());
 	}
@@ -50,10 +49,8 @@ public class GetPlugin : MonoBehaviour {
 
 	IEnumerator CodecJobAsync () {
 		while (!tStop) {
-			// yield return wfeof;
-			yield return 0;
+			yield return wfeof;
 			GL.IssuePluginEvent(0);
-			// DecodeVideo(0, "t");
 		}
 	}
 
@@ -62,7 +59,7 @@ public class GetPlugin : MonoBehaviour {
 	}
 
 	void OnDestroy () {
-		Debug.Log("Stop");
+		logger.Log("Stop");
 		tStop = true;
 		server.Stop();
 		Release();
