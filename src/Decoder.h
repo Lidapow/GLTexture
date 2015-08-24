@@ -15,11 +15,8 @@ class Decoder {
 		int m_Width;
 		int m_Height;
 
-		int m_TempBufferLen;
-		char* m_TempBuffer;
-		int m_TempFilled;
-
-		int m_BufferLen[2];
+		int m_BufferLen;
+		int m_BufferFilled;
 		char* m_Buffer[2];
 };
 
