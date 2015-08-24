@@ -16,7 +16,7 @@ public class ServerTcp : Server {
 		
 		byte[] buffer = new byte[150 * 1024];
 		int i = 0;
-
+		logger.Log("Thread Start");
 		for(;;){
 			client = server.AcceptTcpClient();
 			stream = client.GetStream();
@@ -32,6 +32,6 @@ public class ServerTcp : Server {
 			if(terminate) break;
 		}
 		server.Stop();
-		Debug.Log("Thread Stop");
+		logger.Log("Thread Stop");
 	}
 }

@@ -15,9 +15,9 @@ public class ServerUdp : Server {
 			byte[] receive = server.Receive(ref endPoint);
 			retrievedPacket(receive.Length, receive);
 
-			Thread.Sleep(3);
 			if(terminate) break;
 		}
-		Debug.Log("Thread Stop");
+
+		logger.Log("Thread Stop");
 	}
 }

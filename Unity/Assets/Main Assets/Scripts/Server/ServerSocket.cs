@@ -11,17 +11,17 @@ public class ServerSocket : Server {
 
 		IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 8080);
 		server = new Socket(endPoint.AddressFamily, SocketType.Dgram, ProtocolType.Udp);
-
+		// server.ReceiveBufferSize = 1472;
 		server.Bind(endPoint);
-		byte[] buffer = new byte[6 * 1024];
+		byte[] buffer = new byte[1472];
+		logger.Log(server.ReceiveBufferSize);
 		int i = 0;
 		for(;;){
 			i = server.Receive(buffer);
 			retrievedPacket(i, buffer);
 
-			Thread.Sleep(3);
 			if(terminate) break;
 		}
-		Debug.Log("Thread Stop");
+		logger.Log("Thread Stop");
 	}
 }
