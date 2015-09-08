@@ -16,7 +16,7 @@ public class GetPlugin : MonoBehaviour {
 	private YieldInstruction wfeof;
 
 	[Inject]
-	Server server;
+	IServer server;
 	[Inject(false)]
 	ILogger logger;
 
